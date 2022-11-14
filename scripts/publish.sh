@@ -16,7 +16,7 @@ readonly PARENT_DIR=$(readlink -f "$(dirname "${BASH_SOURCE[0]}")/..")
 # ---------------------------------------------
 # -- Script arguments
 # ---------------------------------------------
-readonly TAG=v0.0.7
+readonly TAG=v0.0.8
 readonly GITHUB_USER="wcarmon"
 readonly PROJECT_NAME="otzap"
 
