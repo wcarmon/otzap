@@ -16,7 +16,7 @@ readonly PARENT_DIR=$(readlink -f "$(dirname "${BASH_SOURCE[0]}")/..")
 # ---------------------------------------------
 # -- Script arguments
 # ---------------------------------------------
-readonly TAG=v0.0.2
+readonly TAG=v0.0.4
 readonly GITHUB_USER="wcarmon"
 readonly PROJECT_NAME="otzap"
 
@@ -26,8 +26,9 @@ readonly PROJECT_NAME="otzap"
 cd "$PARENT_DIR/src" >/dev/null 2>&1
 
 go mod tidy
-git fetch --all
+go clean -modcache
 
+git fetch --all
 git tag $TAG
 
 echo
