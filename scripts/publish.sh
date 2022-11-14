@@ -3,7 +3,7 @@
 # ---------------------------------------------
 # -- Publish new version/tag to github
 # ---------------------------------------------
-#set -x # uncomment to debug script
+set -x # uncomment to debug script
 set -e # exit on first error
 set -o pipefail
 set -u # fail on unset var
@@ -16,14 +16,14 @@ readonly PARENT_DIR=$(readlink -f "$(dirname "${BASH_SOURCE[0]}")/..")
 # ---------------------------------------------
 # -- Script arguments
 # ---------------------------------------------
-readonly TAG=v0.0.5
+readonly TAG=v0.0.6
 readonly GITHUB_USER="wcarmon"
 readonly PROJECT_NAME="otzap"
 
 # ---------------------------------------------
 # -- Publish
 # ---------------------------------------------
-cd "$PARENT_DIR/src" >/dev/null 2>&1
+cd "$PARENT_DIR" >/dev/null 2>&1
 
 go mod tidy
 #go clean -modcache
@@ -32,11 +32,11 @@ git fetch --all
 git tag $TAG
 
 echo
-echo "|-- Pushing ..."
+echo "|-- Pushing all tags ..."
 git push origin --tags;
 
 echo
-echo "|-- Registering ..."
+echo "|-- Registering ${TAG} ..."
 GOPROXY=proxy.golang.org go list -m github.com/${GITHUB_USER}/${PROJECT_NAME}@${TAG}
 
 # ---------------------------------------------

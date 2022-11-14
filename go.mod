@@ -1,4 +1,4 @@
-module github.com/wcarmon/otzap
+module wcarmon.com/otzap
 
 go 1.19
 
