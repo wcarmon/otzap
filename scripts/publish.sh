@@ -3,7 +3,7 @@
 # ---------------------------------------------
 # -- Publish new version/tag to github
 # ---------------------------------------------
-set -x # uncomment to debug script
+#set -x # uncomment to debug script
 set -e # exit on first error
 set -o pipefail
 set -u # fail on unset var
@@ -16,7 +16,7 @@ readonly PARENT_DIR=$(readlink -f "$(dirname "${BASH_SOURCE[0]}")/..")
 # ---------------------------------------------
 # -- Script arguments
 # ---------------------------------------------
-readonly TAG=v0.0.6
+readonly TAG=v0.0.7
 readonly GITHUB_USER="wcarmon"
 readonly PROJECT_NAME="otzap"
 
