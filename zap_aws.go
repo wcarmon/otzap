@@ -26,6 +26,10 @@ package otzap
 // TODO: https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html
 // TODO: https://docs.aws.amazon.com/sdk-for-go/api/service/xray/#XRay.PutTraceSegments
 // TODO: https://docs.aws.amazon.com/cli/latest/reference/xray/put-trace-segments.html
+// TODO: https://github.com/aws-observability/aws-o11y-recipes/tree/main/sandbox
+
+// TODO: https://github.com/aws-observability/aws-o11y-recipes/blob/main/docs/eks.md
+// TODO: https://github.com/aws-observability/aws-otel-collector/blob/main/docs/developers/eks-demo.md
 
 // TODO: AWS X-Ray requires their ID generator
 
