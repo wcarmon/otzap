@@ -10,7 +10,7 @@
 # ---------------------------------------------
 # -- Publish new version/tag to github
 # ---------------------------------------------
-#set -x # uncomment to debug script
+set -x # uncomment to debug script
 set -e # exit on first error
 set -o pipefail
 set -u # fail on unset var
@@ -43,6 +43,8 @@ go mod tidy
 git fetch --all --tags
 git push origin HEAD
 
+
+# -- Require clean workspace
 CLEAN_WORKSPACE_INDICATOR=$(
   git diff-index --quiet HEAD
   echo $?
@@ -71,8 +73,8 @@ echo
 echo "|-- Registering ${TAG} ..."
 # one of these should work :-)
 GOPROXY=proxy.golang.org go list -m github.com/${GITHUB_USER}/${PROJECT_NAME}@${TAG} || true
-GOPROXY=https://proxy.golang.org GO111MODULE=on go get ${GITHUB_USER}/${PROJECT_NAME}@${TAG} || true
-curl https://proxy.golang.org/github.com/${GITHUB_USER}/${PROJECT_NAME}/@v/${TAG}.info || true
+#GOPROXY=https://proxy.golang.org GO111MODULE=on go get ${GITHUB_USER}/${PROJECT_NAME}@${TAG} || true
+#curl https://proxy.golang.org/github.com/${GITHUB_USER}/${PROJECT_NAME}/@v/${TAG}.info || true
 
 
 # ---------------------------------------------
