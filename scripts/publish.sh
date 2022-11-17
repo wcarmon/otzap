@@ -30,15 +30,17 @@ go mod tidy
 
 git fetch --all
 
-if [[ "0" -ne "$(git diff-index --quiet HEAD;echo $?)" ]]; then
-  echo "ERROR: Working directory is not clean"
-  exit 0
-
-else
-  echo "ready to tag!"
-  exit 0
+CLEAN_WORKSPACE_INDICATOR=$(
+  git diff-index --quiet HEAD
+  echo $?
+)
+if [[ "0" -ne "$CLEAN_WORKSPACE_INDICATOR" ]]; then
+  echo "ERROR: Working directory is not clean, commit first"
+  exit 1
 fi
 
+echo
+echo "|-- Tagging ..."
 git tag $TAG
 
 echo
