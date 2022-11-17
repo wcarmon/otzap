@@ -41,6 +41,7 @@ go mod tidy
 #go clean -modcache
 
 git fetch --all
+git push origin HEAD
 
 CLEAN_WORKSPACE_INDICATOR=$(
   git diff-index --quiet HEAD
