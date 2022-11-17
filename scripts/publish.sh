@@ -30,7 +30,7 @@ go mod tidy
 
 git fetch --all
 
-if [[ "0" -eq "$(git diff-index --quiet HEAD)" ]]; then
+if [[ "0" -ne "$(git diff-index --quiet HEAD;echo $?)" ]]; then
   echo "ERROR: Working directory is not clean"
   exit 0
 
