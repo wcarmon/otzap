@@ -54,7 +54,7 @@ fi
 
 echo
 echo "|-- Tagging ..."
-git tag $TAG
+git tag $TAG || true
 
 echo
 echo "|-- Pushing all tags ..."
