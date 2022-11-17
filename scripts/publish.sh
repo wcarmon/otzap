@@ -55,6 +55,13 @@ fi
 echo
 echo "|-- Tagging ..."
 git tag $TAG || true
+# Undo: git tag --delete v0.0.x
+
+
+echo
+echo "|-- Local tags"
+git tag
+
 
 echo
 echo "|-- Pushing all tags ..."
