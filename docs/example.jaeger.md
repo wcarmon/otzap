@@ -1,5 +1,5 @@
 # Overview
-1. Examples for [Jaeger](https://www.jaegertracing.io/) with [OpenTelemetry](https://opentelemetry.io/) (in go)
+1. Examples for [Jaeger](https://www.jaegertracing.io/) with [OpenTelemetry](https://opentelemetry.io/) (in [go](https://go.dev/))
 
 
 # Example [Jaeger Exporter](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/jaeger)

@@ -1,5 +1,5 @@
 # Overview
-1. Examples for [Google Cloud Trace](https://cloud.google.com/trace) with [OpenTelemetry](https://opentelemetry.io/) (in go)
+1. Examples for [Google Cloud Trace](https://cloud.google.com/trace) with [OpenTelemetry](https://opentelemetry.io/) (in [go](https://go.dev/))
 
 
 # Example [Google Cloud Exporter](https://github.com/GoogleCloudPlatform/opentelemetry-operations-go)
