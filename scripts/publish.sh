@@ -3,7 +3,7 @@
 # ---------------------------------------------
 # -- Publish new version/tag to github
 # ---------------------------------------------
-#set -x # uncomment to debug script
+set -x # uncomment to debug script
 set -e # exit on first error
 set -o pipefail
 set -u # fail on unset var
@@ -29,6 +29,16 @@ go mod tidy
 #go clean -modcache
 
 git fetch --all
+
+if [ -z "$(git diff-index --quiet HEAD)" ]; then
+  echo "ERROR: Working directory is not clean"
+  exit 1
+
+else
+  echo "ready to tag!"
+  exit 0
+fi
+
 git tag $TAG
 
 echo
