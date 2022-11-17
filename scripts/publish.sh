@@ -33,7 +33,8 @@ git tag $TAG
 
 echo
 echo "|-- Pushing all tags ..."
-git push origin --tags;
+git push origin --tags
+# Undo: git push --delete origin v0.0.999
 
 echo
 echo "|-- Registering ${TAG} ..."

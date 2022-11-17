@@ -132,6 +132,7 @@ func AddFatalEventToSpan(ctx context.Context, msg string, err ...error) {
 	AddFatalEvent(span, msg, err...)
 }
 
+// RecordErrors is a low-level method, prefer the methods above
 // RecordErrors simplifies recording errors correctly for Jaeger,
 // Google Cloud Trace, AWS XRay, etc
 func RecordErrors(span trace.Span, err ...error) {

@@ -7,11 +7,6 @@ import (
 	"time"
 )
 
-// IsInGoogleCloud returns true iff the application is running in Google Cloud
-func IsInGoogleCloud() bool {
-	return os.Getenv("HOME") == "/app"
-}
-
 // NewGoogleCloudCore builds a zapcore.Core that writes to stdout
 // in Google Cloud Logging format
 //
