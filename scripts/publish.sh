@@ -10,7 +10,7 @@
 # ---------------------------------------------
 # -- Publish new version/tag to github
 # ---------------------------------------------
-set -x # uncomment to debug script
+#set -x # uncomment to debug script
 set -e # exit on first error
 set -o pipefail
 set -u # fail on unset var
@@ -71,9 +71,9 @@ git fetch --all --tags
 
 echo
 echo "|-- Registering ${TAG} ..."
-# one of these should work :-)
+#TODO: sometimes we have to retry or force via browser
 GOPROXY=proxy.golang.org go list -m github.com/${GITHUB_USER}/${PROJECT_NAME}@${TAG} || true
-#GOPROXY=https://proxy.golang.org GO111MODULE=on go get ${GITHUB_USER}/${PROJECT_NAME}@${TAG} || true
+GOPROXY=https://proxy.golang.org GO111MODULE=on go get github.com/${GITHUB_USER}/${PROJECT_NAME}@${TAG} || true
 #curl https://proxy.golang.org/github.com/${GITHUB_USER}/${PROJECT_NAME}/@v/${TAG}.info || true
 
 
