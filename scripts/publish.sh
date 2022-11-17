@@ -77,3 +77,7 @@ GOPROXY=proxy.golang.org go list -m github.com/${GITHUB_USER}/${PROJECT_NAME}@${
 echo
 echo "|-- Retrieve using ..."
 echo "go get github.com/${GITHUB_USER}/${PROJECT_NAME}@${TAG}"
+
+echo
+echo "|-- See docs ..."
+echo "https://pkg.go.dev/github.com/${GITHUB_USER}/${PROJECT_NAME}"
