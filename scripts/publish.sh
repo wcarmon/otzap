@@ -40,7 +40,7 @@ cd "$PARENT_DIR" >/dev/null 2>&1
 go mod tidy
 #go clean -modcache
 
-git fetch --all
+git fetch --all --tags
 git push origin HEAD
 
 CLEAN_WORKSPACE_INDICATOR=$(
@@ -65,6 +65,7 @@ echo
 echo "|-- Pushing all tags ..."
 git push origin --tags
 # Undo: git push --delete origin v0.0.999
+git fetch --all --tags
 
 echo
 echo "|-- Registering ${TAG} ..."
@@ -74,5 +75,5 @@ GOPROXY=proxy.golang.org go list -m github.com/${GITHUB_USER}/${PROJECT_NAME}@${
 # -- Report
 # ---------------------------------------------
 echo
-echo "|-- Retrieve using "
+echo "|-- Retrieve using ..."
 echo "go get github.com/${GITHUB_USER}/${PROJECT_NAME}@${TAG}"
