@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# -- Usage:
+# 1. Update code/tests/docs
+# 2. Auto-format
+# 3. Bump version in VERSION file
+# 4. Commit
+# 5. Run this file
+
 # ---------------------------------------------
 # -- Publish new version/tag to github
 # ---------------------------------------------
@@ -16,9 +23,14 @@ readonly PARENT_DIR=$(readlink -f "$(dirname "${BASH_SOURCE[0]}")/..")
 # ---------------------------------------------
 # -- Script arguments
 # ---------------------------------------------
-readonly TAG=v0.0.9
+readonly TAG=$(cat $PARENT_DIR/VERSION)
 readonly GITHUB_USER="wcarmon"
 readonly PROJECT_NAME="otzap"
+
+# ---------------------------------------------
+# -- Validate
+# ---------------------------------------------
+#TODO: validate tag
 
 # ---------------------------------------------
 # -- Publish
