@@ -69,7 +69,11 @@ git fetch --all --tags
 
 echo
 echo "|-- Registering ${TAG} ..."
-GOPROXY=proxy.golang.org go list -m github.com/${GITHUB_USER}/${PROJECT_NAME}@${TAG}
+# one of these should work :-)
+GOPROXY=proxy.golang.org go list -m github.com/${GITHUB_USER}/${PROJECT_NAME}@${TAG} || true
+GOPROXY=https://proxy.golang.org GO111MODULE=on go get ${GITHUB_USER}/${PROJECT_NAME}@${TAG} || true
+curl https://proxy.golang.org/github.com/${GITHUB_USER}/${PROJECT_NAME}/@v/${TAG}.info || true
+
 
 # ---------------------------------------------
 # -- Report
