@@ -35,7 +35,6 @@ package otzap
 
 /*
 
-
 traceExporter, err := otlptracegrpc.New(
 	ctx,
 	otlptracegrpc.WithInsecure(),
