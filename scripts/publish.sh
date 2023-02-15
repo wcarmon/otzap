@@ -4,7 +4,7 @@
 # 1. Update code/tests/docs
 # 2. Auto-format
 # 3. Bump version in VERSION file
-# 4. Commit
+# 4. Commit (Don't push)
 # 5. Run this file
 
 # ---------------------------------------------
