@@ -1,6 +1,6 @@
 // MIT License
 //
-// Copyright (c) 2022 Wilbur Carmon II
+// Copyright (c) 2023 Wilbur Carmon II
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,6 @@ import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"os"
-	"time"
 )
 
 // NewGoogleCloudCore builds a zapcore.Core that writes to stdout
@@ -40,10 +39,19 @@ func NewGoogleCloudCore(minLevel zapcore.Level) zapcore.Core {
 	cfg.EncodeLevel = GoogleCloudLevelEncoder
 
 	// See https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry
-	cfg.EncodeTime = zapcore.TimeEncoderOfLayout(time.RFC3339Nano)
+	cfg.CallerKey = "caller"
+	cfg.EncodeCaller = zapcore.ShortCallerEncoder
+	cfg.EncodeDuration = zapcore.SecondsDurationEncoder
 	cfg.LevelKey = "severity"
+	cfg.LineEnding = zapcore.DefaultLineEnding
 	cfg.MessageKey = "message"
+	cfg.NameKey = "logger"
+	cfg.StacktraceKey = "stacktrace"
 	cfg.TimeKey = "timestamp"
+
+	// TODO: confirm this is better
+	cfg.EncodeTime = zapcore.RFC3339NanoTimeEncoder
+	//cfg.EncodeTime = zapcore.TimeEncoderOfLayout(time.RFC3339Nano)
 
 	return zapcore.NewCore(
 		zapcore.NewJSONEncoder(cfg),
@@ -69,8 +77,11 @@ func GoogleCloudLevelEncoder(
 		s = "WARNING"
 	case zapcore.ErrorLevel:
 		s = "ERROR"
+	case zapcore.DPanicLevel:
+		s = "CRITICAL"
 	case zapcore.FatalLevel:
 		s = "ALERT"
+		//s = "EMERGENCY"
 	}
 
 	enc.AppendString(s)

@@ -2,7 +2,7 @@
 
 # -- Usage:
 # 1. Update code/tests/docs
-# 2. Auto-format
+# 2. go mod tidy; go fmt;
 # 3. Bump version in VERSION file
 # 4. Commit (Don't push)
 # 5. Run this file
